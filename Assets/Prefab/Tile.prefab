@@ -116,7 +116,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 9211319060813929079}
           m_TargetAssemblyTypeName: TileScript, Assembly-CSharp
-          m_MethodName: ScanResource
+          m_MethodName: ScanNExtractResource
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
