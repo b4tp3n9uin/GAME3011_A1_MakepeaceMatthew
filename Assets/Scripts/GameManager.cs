@@ -49,12 +49,6 @@ public class GameManager : MonoBehaviour
         HTP_Canvas.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SwitchModes()
     {
         if (ExtractMode)
@@ -82,6 +76,7 @@ public class GameManager : MonoBehaviour
 
     public void SetUpHtpCanvas()
     {
+        // For how to play Pop-up Pannel.
         HTP_Canvas.SetActive(true);
     }
 
@@ -92,6 +87,7 @@ public class GameManager : MonoBehaviour
 
     public void FinalResults()
     {
+        // For final results pop-up pannel.
         FinalResult_Text.text = "Final Score: " + Score;
         Final_Canvas.SetActive(true);
     }
@@ -103,6 +99,7 @@ public class GameManager : MonoBehaviour
 
     public void CloseGame()
     {
+        // Close Button
         InGame_Canvas.SetActive(false);
         ToggleGame_Button.SetActive(false);
         Debug.Log("Quit");

@@ -10,7 +10,7 @@ public class GridScript : MonoBehaviour
     GameObject TilePrefab;
 
     [SerializeField]
-    int rowsNColumns = 32;
+    int rowsNColumns = 15;
     [SerializeField]
     float tileSpacing = 1;
     [SerializeField]
@@ -19,6 +19,7 @@ public class GridScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Create the Grid that has a 15 by 15 tiles.
         rect = GetComponent<RectTransform>();
 
         GameObject referenceTile = (GameObject)Instantiate(TilePrefab);

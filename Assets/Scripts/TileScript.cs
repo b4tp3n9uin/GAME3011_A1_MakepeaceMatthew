@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum RESOURCE_TYPE {
+    // enum to determine the resource type.
+
     CONTROLLER,
     MEDAL, 
     TROPHY,
@@ -40,14 +42,9 @@ public class TileScript : MonoBehaviour
         isClicked = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void ResourceTypeDetermined()
     {
+        // Change the imgage to reveal the resource type one tile is.
         switch (resource_Type)
         {
             case RESOURCE_TYPE.TROPHY:
@@ -70,6 +67,7 @@ public class TileScript : MonoBehaviour
     {
         int rand = Random.RandomRange(1, 225);
 
+        // Determine the random chances for the tiers of resources.
         if (rand <= 113)
         {
             resource_Type = RESOURCE_TYPE.MINIMAL;
