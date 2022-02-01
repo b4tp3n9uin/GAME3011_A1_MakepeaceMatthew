@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,11 +16,15 @@ public class GameManager : MonoBehaviour
     public TMPro.TextMeshProUGUI ExtractText;
     public TMPro.TextMeshProUGUI ScanText;
     public TMPro.TextMeshProUGUI ScoreText;
+    public Text FinalResult_Text;
 
     [Header("Pannels")]
     public GameObject HTP_Canvas;
+    public GameObject InGame_Canvas;
     public GameObject Final_Canvas;
-    public Text FinalScoreText;
+
+    [Header("Toggle Button")]
+    public GameObject ToggleGame_Button;
 
     [Header("Audio Clips")]
     public AudioSource ExtractSFX;
@@ -30,17 +33,20 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ToggleGame_Button.SetActive(true);
+        InGame_Canvas.SetActive(false);
+        Final_Canvas.SetActive(false);
+
         ExtractsLeft = 3;
         ScansLeft = 6;
         Score = 0;
+
         ExtractMode = true;
+        ModeText.text = "In Extract Mode";
 
-        SwitchModes();
-
-        Final_Canvas.SetActive(false);
-        HTP_Canvas.SetActive(false);
 
         UpdateTexts();
+        HTP_Canvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -84,14 +90,22 @@ public class GameManager : MonoBehaviour
         HTP_Canvas.SetActive(false);
     }
 
-    public void RestartGame()
+    public void FinalResults()
     {
-        SceneManager.LoadScene("SampleScene");
+        FinalResult_Text.text = "Final Score: " + Score;
+        Final_Canvas.SetActive(true);
     }
 
-    public void FinishGame()
+    public void ToggleGame()
     {
-        FinalScoreText.text = "Final Score: " + Score;
-        Final_Canvas.SetActive(true);
+        InGame_Canvas.SetActive(true);
+    }
+
+    public void CloseGame()
+    {
+        InGame_Canvas.SetActive(false);
+        ToggleGame_Button.SetActive(false);
+        Debug.Log("Quit");
+        Application.Quit();
     }
 }

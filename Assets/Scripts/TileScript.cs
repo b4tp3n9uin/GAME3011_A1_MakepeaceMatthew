@@ -129,8 +129,8 @@ public class TileScript : MonoBehaviour
                 gameManager.UpdateTexts();
                 HiddenPic.color = Color.black;
 
-                if (GameManager.ExtractsLeft <= 0)
-                    gameManager.FinishGame();
+                if (GameManager.ExtractsLeft == 0)
+                    gameManager.FinalResults();
             }
             else
                 FindObjectOfType<AudioManager>().Play("Error");
