@@ -58,6 +58,7 @@ public class TileScript : MonoBehaviour
                 break;
             case RESOURCE_TYPE.CONTROLLER:
                 real_ResourceIMG = quarter;
+                
                 break;
             default:
                 real_ResourceIMG = minimal;
@@ -72,21 +73,25 @@ public class TileScript : MonoBehaviour
         if (rand <= 113)
         {
             resource_Type = RESOURCE_TYPE.MINIMAL;
+            FindObjectOfType<AudioManager>().Play("Minimal");
             value = 0;
         }
         else if (rand > 113 && rand <= 173)
         {
             resource_Type = RESOURCE_TYPE.CONTROLLER;
+            FindObjectOfType<AudioManager>().Play("Controller");
             value = 100;
         }
         else if (rand > 173 && rand <= 210)
         {
             resource_Type = RESOURCE_TYPE.MEDAL;
+            FindObjectOfType<AudioManager>().Play("Medal");
             value = 500;
         }
         else if (rand > 210)
         {
             resource_Type = RESOURCE_TYPE.TROPHY;
+            FindObjectOfType<AudioManager>().Play("Trophy");
             value = 1000;
         }
 
@@ -108,6 +113,8 @@ public class TileScript : MonoBehaviour
                 DetermineResource();
                 HiddenPic.sprite = real_ResourceIMG;
             }
+            else
+                FindObjectOfType<AudioManager>().Play("Error");
         }
 
         // Extract
@@ -117,6 +124,7 @@ public class TileScript : MonoBehaviour
             {
                 GameManager.ExtractsLeft--;
                 GameManager.Score += value;
+                FindObjectOfType<AudioManager>().Play("Extract");
 
                 gameManager.UpdateTexts();
                 HiddenPic.color = Color.black;
@@ -124,6 +132,8 @@ public class TileScript : MonoBehaviour
                 if (GameManager.ExtractsLeft <= 0)
                     gameManager.FinishGame();
             }
+            else
+                FindObjectOfType<AudioManager>().Play("Error");
         }
 
     }

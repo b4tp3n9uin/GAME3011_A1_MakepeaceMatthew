@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -21,6 +22,10 @@ public class GameManager : MonoBehaviour
     public GameObject HTP_Canvas;
     public GameObject Final_Canvas;
     public Text FinalScoreText;
+
+    [Header("Audio Clips")]
+    public AudioSource ExtractSFX;
+    public AudioSource ScanSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -46,15 +51,17 @@ public class GameManager : MonoBehaviour
 
     public void SwitchModes()
     {
-        // Set to Scan Mode
         if (ExtractMode)
         {
+            // Set to Scan Mode
+            ScanSFX.Play();
             ExtractMode = false;
             ModeText.text = "In Scan Mode";
         }
         else
         {
             // Set to Extract Mode
+            ExtractSFX.Play();
             ExtractMode = true;
             ModeText.text = "In Extract Mode";
         }
